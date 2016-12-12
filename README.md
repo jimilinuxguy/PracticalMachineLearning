@@ -1,6 +1,6 @@
 # Predict activity quality from activity monitors
-Onur Akpolat  
-24. January 2015  
+Jimi Sanchez
+Monday, December 12, 2016
 
 ##Synopsis
 
@@ -128,7 +128,7 @@ In this section cross-validation will be performed by splitting the training dat
 
 ```r
 subSamples <- createDataPartition(y=training$classe, p=0.75, list=FALSE)
-subTraining <- training[subSamples, ] 
+subTraining <- training[subSamples, ]
 subTesting <- training[-subSamples, ]
 ```
 
@@ -143,7 +143,7 @@ The variable `classe` contains 5 levels. The plot of the outcome variable shows 
 plot(subTraining$classe, col="orange", main="Levels of the variable classe", xlab="classe levels", ylab="Frequency")
 ```
 
-![](Practical_ML_Course_Project_files/figure-html/exploranalysis-1.png) 
+![](Practical_ML_Course_Project_files/figure-html/exploranalysis-1.png)
 
 The plot above shows that Level A is the most frequent classe. D appears to be the least frequent one.
 
@@ -163,7 +163,7 @@ predictDT <- predict(modFitDT, subTesting, type = "class")
 rpart.plot(modFitDT, main="Classification Tree", extra=102, under=TRUE, faclen=0)
 ```
 
-![](Practical_ML_Course_Project_files/figure-html/decisiontree-1.png) 
+![](Practical_ML_Course_Project_files/figure-html/decisiontree-1.png)
 
 Following confusion matrix shows the errors of the prediction algorithm.
 
@@ -174,7 +174,7 @@ confusionMatrix(predictDT, subTesting$classe)
 
 ```
 ## Confusion Matrix and Statistics
-## 
+##
 ##           Reference
 ## Prediction    A    B    C    D    E
 ##          A 1266  208   25   91   29
@@ -182,7 +182,7 @@ confusionMatrix(predictDT, subTesting$classe)
 ##          C   28   90  676  130   94
 ##          D   45   72   59  501   43
 ##          E   23   44   24   52  668
-## 
+##
 ## Overall Statistics
 ##                                          
 ##                Accuracy : 0.7435         
@@ -192,9 +192,9 @@ confusionMatrix(predictDT, subTesting$classe)
 ##                                          
 ##                   Kappa : 0.6738         
 ##  Mcnemar's Test P-Value : < 2.2e-16      
-## 
+##
 ## Statistics by Class:
-## 
+##
 ##                      Class: A Class: B Class: C Class: D Class: E
 ## Sensitivity            0.9075   0.5638   0.7906   0.6231   0.7414
 ## Specificity            0.8994   0.9492   0.9155   0.9466   0.9643
@@ -225,7 +225,7 @@ confusionMatrix(predictRF, subTesting$classe)
 
 ```
 ## Confusion Matrix and Statistics
-## 
+##
 ##           Reference
 ## Prediction    A    B    C    D    E
 ##          A 1394    2    0    0    0
@@ -233,7 +233,7 @@ confusionMatrix(predictRF, subTesting$classe)
 ##          C    0    1  846    6    0
 ##          D    0    0    1  796    1
 ##          E    0    0    0    2  900
-## 
+##
 ## Overall Statistics
 ##                                           
 ##                Accuracy : 0.9955          
@@ -243,9 +243,9 @@ confusionMatrix(predictRF, subTesting$classe)
 ##                                           
 ##                   Kappa : 0.9943          
 ##  Mcnemar's Test P-Value : NA              
-## 
+##
 ## Statistics by Class:
-## 
+##
 ##                      Class: A Class: B Class: C Class: D Class: E
 ## Sensitivity            0.9993   0.9968   0.9895   0.9900   0.9989
 ## Specificity            0.9994   0.9977   0.9983   0.9995   0.9995
@@ -277,8 +277,8 @@ predictSubmission
 ```
 
 ```
-##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
-##  B  A  B  A  A  E  D  B  A  A  B  C  B  A  E  E  A  B  B  B 
+##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+##  B  A  B  A  A  E  D  B  A  A  B  C  B  A  E  E  A  B  B  B
 ## Levels: A B C D E
 ```
 
